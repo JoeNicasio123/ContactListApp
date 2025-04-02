@@ -44,7 +44,7 @@
                                     <segment title="Edit"/>
                                 </segments>
                             </segmentedControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-TI-BRf">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-TI-BRf">
                                 <rect key="frame" x="-10" y="106" width="413" height="347.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="d4N-xU-XMc">
@@ -207,6 +207,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" image="person.crop.circle" catalog="system" id="avU-3T-Kto"/>
+                    <connections>
+                        <outlet property="scrollView" destination="AeY-TI-BRf" id="KDV-8m-Cv8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
