@@ -290,7 +290,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nql-sJ-8Rm">
                                                 <rect key="frame" x="131.33333333333331" y="0.0" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="sortDirectionChanged:" destination="rLr-Dt-q61" eventType="valueChanged" id="zgh-dV-Rlg"/>
+                                                    <action selector="sortDirectionChanged:" destination="rLr-Dt-q61" eventType="valueChanged" id="LUu-6n-fDY"/>
                                                 </connections>
                                             </switch>
                                         </subviews>

@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
     @IBOutlet weak var swAscending: UISwitch!
     @IBOutlet weak var pckSortField: UIPickerView!
     
@@ -16,14 +16,10 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         pckSortField.dataSource = self;
         pckSortField.delegate = self;
-    }
-    
-    @IBAction func sortDirectionChanged(_ sender: Any) {
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -39,18 +35,40 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Chosen item: \(sortOrderItems[row])")
+        let sortField = sortOrderItems[row]
+        let settings = UserDefaults.standard
+        settings.set(sortField, forKey: "sortField")
+        settings.synchronize()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        let settings = UserDefaults.standard
+        swAscending.setOn(settings.bool(forKey: "sortDirectionAscending"), animated: true)
+        let sortField = settings.string(forKey: "sortField")
+        var i = 0
+        for field in sortOrderItems {
+            if field == sortField {
+                pckSortField.selectRow(i, inComponent: 0, animated: false)
+            }
+            i += 1
+        }
+        pckSortField.reloadComponent(0)
     }
-    */
-
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    @IBAction func sortDirectionChanged(_ sender: Any) {
+        let settings = UserDefaults.standard
+        settings.set(swAscending.isOn, forKey: "sortDirectionChanged")
+        settings.synchronize()
+    }
 }
