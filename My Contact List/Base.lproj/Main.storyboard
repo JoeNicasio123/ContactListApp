@@ -261,18 +261,59 @@
         <!--Settings-->
         <scene sceneID="LzA-R6-dAS">
             <objects>
-                <viewController title="Settings" id="rLr-Dt-q61" sceneMemberID="viewController">
+                <viewController title="Settings" id="rLr-Dt-q61" customClass="SettingsViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L45-f1-mNb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="nuC-Wd-8XW">
+                                <rect key="frame" x="36.666666666666657" y="260.33333333333337" width="320" height="331.33333333333337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Order:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpT-R0-GyF">
+                                        <rect key="frame" x="117.33333333333334" y="0.0" width="85" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbf-Jr-2Ov">
+                                        <rect key="frame" x="0.0" y="52.333333333333371" width="320" height="216"/>
+                                    </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MrV-8G-Ome">
+                                        <rect key="frame" x="69.666666666666643" y="300.33333333333331" width="180.33333333333337" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Sort:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWZ-zu-8ne">
+                                                <rect key="frame" x="0.0" y="0.0" width="121.33333333333333" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nql-sJ-8Rm">
+                                                <rect key="frame" x="131.33333333333331" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="sortDirectionChanged:" destination="rLr-Dt-q61" eventType="valueChanged" id="zgh-dV-Rlg"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="eMo-wE-hCw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nuC-Wd-8XW" firstAttribute="centerX" secondItem="L45-f1-mNb" secondAttribute="centerX" id="Fy3-4Z-ITQ"/>
+                            <constraint firstItem="nuC-Wd-8XW" firstAttribute="centerY" secondItem="L45-f1-mNb" secondAttribute="centerY" id="bfa-HV-XSI"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="57b-ZS-6FB"/>
+                    <connections>
+                        <outlet property="pckSortField" destination="zbf-Jr-2Ov" id="Rrn-Af-Xdc"/>
+                        <outlet property="swAscending" destination="Nql-sJ-8Rm" id="11O-Ud-T1k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ztS-hA-Keo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="307"/>
+            <point key="canvasLocation" x="907.63358778625945" y="306.33802816901408"/>
         </scene>
         <!--Maps-->
         <scene sceneID="FQh-3b-hnh">
