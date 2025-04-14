@@ -34,11 +34,11 @@
             <objects>
                 <viewController title="Contacts" id="BYZ-38-t0r" customClass="ViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Yhw-QJ-cc3">
-                                <rect key="frame" x="147" y="0.0" width="99" height="32"/>
+                                <rect key="frame" x="147" y="103" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -121,7 +121,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eig-AD-8cH">
-                                                                <rect key="frame" x="0.0" y="28.333333333333343" width="161.66666666666666" height="34"/>
+                                                                <rect key="frame" x="0.0" y="28.333333333333314" width="161.66666666666666" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -137,7 +137,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vhe-MG-nxi">
-                                                                <rect key="frame" x="0.0" y="27.333333333333343" width="161.33333333333334" height="35"/>
+                                                                <rect key="frame" x="0.0" y="27.333333333333314" width="161.33333333333334" height="35"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -237,11 +237,11 @@
             <objects>
                 <viewController title="Birthdate" id="UgY-2X-UyA" customClass="DateViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="94c-v3-gZ8">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="TBx-Pv-EIP">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="34.333333333333336"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="34.333333333333343"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kGT-dI-y1l"/>
@@ -318,7 +318,7 @@
             </objects>
             <point key="canvasLocation" x="907.63358778625945" y="306.33802816901408"/>
         </scene>
-        <!--Contacts Table View Controller-->
+        <!--Contacts-->
         <scene sceneID="EIl-Ad-VZv">
             <objects>
                 <tableViewController id="drB-JD-VZz" customClass="ContactsTableViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -360,7 +360,15 @@
                             <outlet property="delegate" destination="drB-JD-VZz" id="Ieq-37-BCT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YZa-5d-DUa"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Contacts" id="YZa-5d-DUa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5iP-CI-L8S">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="addContact" id="7yH-MF-FkP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1eg-me-y57" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -402,6 +410,9 @@
             <point key="canvasLocation" x="907.63358778625945" y="-458.45070422535213"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7yH-MF-FkP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="globe.europe.africa.fill" catalog="system" width="128" height="123"/>
