@@ -34,11 +34,11 @@
             <objects>
                 <viewController title="Contacts" id="BYZ-38-t0r" customClass="ViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Yhw-QJ-cc3">
-                                <rect key="frame" x="147" y="103" width="99" height="32"/>
+                                <rect key="frame" x="147" y="0.0" width="99" height="32"/>
                                 <segments>
                                     <segment title="View"/>
                                     <segment title="Edit"/>
@@ -121,7 +121,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eig-AD-8cH">
-                                                                <rect key="frame" x="0.0" y="28.333333333333314" width="161.66666666666666" height="34"/>
+                                                                <rect key="frame" x="0.0" y="28.333333333333343" width="161.66666666666666" height="34"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -137,7 +137,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vhe-MG-nxi">
-                                                                <rect key="frame" x="0.0" y="27.333333333333314" width="161.33333333333334" height="35"/>
+                                                                <rect key="frame" x="0.0" y="27.333333333333343" width="161.33333333333334" height="35"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                             </textField>
@@ -184,7 +184,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Change"/>
                                                         <connections>
-                                                            <segue destination="UgY-2X-UyA" kind="show" id="VJL-Zy-Vc6"/>
+                                                            <segue destination="UgY-2X-UyA" kind="show" identifier="segueContactDate" id="VJL-Zy-Vc6"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -230,18 +230,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1834.3511450381679" y="-458.45070422535213"/>
+            <point key="canvasLocation" x="2323" y="-458"/>
         </scene>
         <!--Birthdate-->
         <scene sceneID="wKE-K5-6Qb">
             <objects>
-                <viewController title="Birthdate" id="UgY-2X-UyA" sceneMemberID="viewController">
+                <viewController title="Birthdate" id="UgY-2X-UyA" customClass="DateViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="94c-v3-gZ8">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="TBx-Pv-EIP">
-                                <rect key="frame" x="0.0" y="103" width="393" height="36"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="TBx-Pv-EIP">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="34.333333333333336"/>
                             </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kGT-dI-y1l"/>
@@ -253,10 +253,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="w0L-6Y-bs7"/>
+                    <connections>
+                        <outlet property="dtpDate" destination="TBx-Pv-EIP" id="rbP-rQ-8j6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ph4-Pi-6MV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2517" y="-446"/>
+            <point key="canvasLocation" x="2999" y="-458"/>
         </scene>
         <!--Settings-->
         <scene sceneID="LzA-R6-dAS">
@@ -315,6 +318,54 @@
             </objects>
             <point key="canvasLocation" x="907.63358778625945" y="306.33802816901408"/>
         </scene>
+        <!--Contacts Table View Controller-->
+        <scene sceneID="EIl-Ad-VZv">
+            <objects>
+                <tableViewController id="drB-JD-VZz" customClass="ContactsTableViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="32Z-xN-wPc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactsCell" textLabel="2pY-wV-zwB" detailTextLabel="yqB-6M-KAp" style="IBUITableViewCellStyleSubtitle" id="HPb-VP-6hr">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HPb-VP-6hr" id="P3C-kw-1eM">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2pY-wV-zwB">
+                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yqB-6M-KAp">
+                                            <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="showDetail" identifier="EditContact" trigger="accessoryAction" id="bmO-5E-2Ps"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="drB-JD-VZz" id="xLQ-FJ-k1l"/>
+                            <outlet property="delegate" destination="drB-JD-VZz" id="Ieq-37-BCT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="YZa-5d-DUa"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1eg-me-y57" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="-458"/>
+        </scene>
         <!--Maps-->
         <scene sceneID="FQh-3b-hnh">
             <objects>
@@ -343,7 +394,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Nf7-3S-41N"/>
+                        <segue destination="drB-JD-VZz" kind="relationship" relationship="rootViewController" id="A5t-0t-OqX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUB-vK-yWy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

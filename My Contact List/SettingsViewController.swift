@@ -37,14 +37,14 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let sortField = sortOrderItems[row]
         let settings = UserDefaults.standard
-        settings.set(sortField, forKey: "sortField")
+        settings.set(sortField, forKey: Constants.kSortField)
         settings.synchronize()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let settings = UserDefaults.standard
-        swAscending.setOn(settings.bool(forKey: "sortDirectionAscending"), animated: true)
-        let sortField = settings.string(forKey: "sortField")
+        swAscending.setOn(settings.bool(forKey: Constants.kSortDirectionAscending), animated: true)
+        let sortField = settings.string(forKey: Constants.kSortField)
         var i = 0
         for field in sortOrderItems {
             if field == sortField {
@@ -68,7 +68,7 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBAction func sortDirectionChanged(_ sender: Any) {
         let settings = UserDefaults.standard
-        settings.set(swAscending.isOn, forKey: "sortDirectionChanged")
+        settings.set(swAscending.isOn, forKey: Constants.kSortDirectionAscending)
         settings.synchronize()
     }
 }

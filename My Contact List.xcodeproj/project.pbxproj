@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BF0A9A622DAC85C50018DE8E /* MyContactListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF0A9A602DAC85C50018DE8E /* MyContactListModel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		BF0A9A612DAC85C50018DE8E /* MyContactListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyContactListModel.xcdatamodel; sourceTree = "<group>"; };
 		BF75F7DA2D9A07E1004B675D /* My Contact List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Contact List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -45,6 +50,7 @@
 		BF75F7D12D9A07E1004B675D = {
 			isa = PBXGroup;
 			children = (
+				BF0A9A602DAC85C50018DE8E /* MyContactListModel.xcdatamodeld */,
 				BF75F7DC2D9A07E1004B675D /* My Contact List */,
 				BF75F7DB2D9A07E1004B675D /* Products */,
 			);
@@ -132,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF0A9A622DAC85C50018DE8E /* MyContactListModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +342,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BF0A9A602DAC85C50018DE8E /* MyContactListModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BF0A9A612DAC85C50018DE8E /* MyContactListModel.xcdatamodel */,
+			);
+			currentVersion = BF0A9A612DAC85C50018DE8E /* MyContactListModel.xcdatamodel */;
+			path = MyContactListModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BF75F7D22D9A07E1004B675D /* Project object */;
 }

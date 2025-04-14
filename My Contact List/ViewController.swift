@@ -6,8 +6,31 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+    
+    func dateChanged(date: Date) {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.birthday = date
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        lblBirthdate.text = formatter.string(from: date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueContactDate") {
+            let dateController = segue.destination as! DateViewController
+            dateController.delegate = self
+        }
+    }
+    
+    
+    var currentContact: Contact?
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
@@ -25,7 +48,43 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if currentContact != nil {
+            txtName.text = currentContact!.contactName
+            txtAddress.text = currentContact!.streetAddress
+            txtCity.text = currentContact!.city
+            txtState.text = currentContact!.state
+            txtZip.text = currentContact!.zipCode
+            txtPhone.text = currentContact!.phoneNumber
+            txtCell.text = currentContact!.cellNumber
+            txtEmail.text = currentContact!.email
+            let formatter = DateFormatter()
+            formatter.dateStyle = .short
+            if currentContact!.birthday != nil {
+                lblBirthdate.text = formatter.string(from: currentContact!.birthday!)
+            }
+        }
         self.changeEditMode(self)
+        
+        let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtPhone, txtCell, txtEmail]
+        for textfield in textFields {
+            textfield.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
+        }
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if currentContact == nil {
+            let context = appDelegate.persistentContainer.viewContext
+            currentContact = Contact(context: context)
+        }
+        currentContact?.contactName = txtName.text
+        currentContact?.streetAddress = txtAddress.text
+        currentContact?.city = txtCity.text
+        currentContact?.state = txtState.text
+        currentContact?.zipCode = txtZip.text
+        currentContact?.cellNumber = txtCell.text
+        currentContact?.phoneNumber = txtPhone.text
+        currentContact?.email = txtEmail.text
+        return true
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,6 +99,7 @@ class ViewController: UIViewController {
                 textField.borderStyle = UITextField.BorderStyle.none
             }
             btnChange.isHidden = true
+            navigationItem.rightBarButtonItem = nil
         }
         else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields {
@@ -47,6 +107,9 @@ class ViewController: UIViewController {
                 textField.borderStyle = UITextField.BorderStyle.roundedRect
             }
             btnChange.isHidden = false
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save,
+                                                                target: self,
+                                                                action: #selector(self.saveContact))
         }
     }
     
@@ -93,6 +156,11 @@ class ViewController: UIViewController {
         self.scrollView.contentInset = contentInset
         self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
-
+    
+    @objc func saveContact() {
+        appDelegate.saveContext()
+        sgmtEditMode.selectedSegmentIndex = 0
+        changeEditMode(self)
+    }
 }
 
