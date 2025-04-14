@@ -16,6 +16,8 @@ class ContactsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = self.editButtonItem
         //loadDataFromDatabase()
 
         // Uncomment the following line to preserve selection between presentations
@@ -71,6 +73,24 @@ class ContactsTableViewController: UITableViewController {
         return true
     }
     */
+    
+    override func tableView(_ _tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let contact = contacts[indexPath.row] as? Contact
+            let context = appDelegate.persistentContainer.viewContext
+            context.delete(contact!)
+            do {
+                try context.save()
+            }
+            catch {
+                fatalError("Error saving context: \(error)")
+            }
+            loadDataFromDatabase()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            
+        }
+    }
 
     
     // Override to support editing the table view.
