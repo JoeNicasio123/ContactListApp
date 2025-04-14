@@ -37,8 +37,16 @@ class ContactsTableViewController: UITableViewController {
     }
     
     func loadDataFromDatabase() {
+        let settings = UserDefaults.standard
+        let sortField = settings.string(forKey: Constants.kSortField)
+        let sortAscending = settings.bool(forKey: Constants.kSortDirectionAscending)
+        
         let context = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSManagedObject>(entityName: "Contact")
+        let sortDescriptor = NSSortDescriptor(key: sortField, ascending: sortAscending)
+        let sortDescriptorArray = [sortDescriptor]
+        request.sortDescriptors = sortDescriptorArray
+        
         do {
             contacts = try context.fetch(request)
         } catch let error as NSError {

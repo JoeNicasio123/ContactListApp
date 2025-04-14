@@ -216,6 +216,7 @@
                     <connections>
                         <outlet property="btnChange" destination="1Nl-hf-fwu" id="7Jz-4k-pMm"/>
                         <outlet property="lblBirthdate" destination="Dwe-0K-eSG" id="zaK-WV-lKC"/>
+                        <outlet property="lblDate" destination="egz-qK-AbA" id="2Fh-Ak-8pe"/>
                         <outlet property="scrollView" destination="AeY-TI-BRf" id="KDV-8m-Cv8"/>
                         <outlet property="sgmtEditMode" destination="Yhw-QJ-cc3" id="sqW-p0-qwy"/>
                         <outlet property="txtAddress" destination="HvS-4L-F7E" id="CB8-eI-Z4a"/>

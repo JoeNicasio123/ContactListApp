@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
         currentContact?.birthday = date
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        lblBirthdate.text = formatter.string(from: date)
+        lblDate.text = formatter.string(from: date)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,6 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var lblBirthdate: UILabel!
+    @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var btnChange: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
@@ -60,7 +61,7 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
             let formatter = DateFormatter()
             formatter.dateStyle = .short
             if currentContact!.birthday != nil {
-                lblBirthdate.text = formatter.string(from: currentContact!.birthday!)
+                lblDate.text = formatter.string(from: currentContact!.birthday!)
             }
         }
         self.changeEditMode(self)
