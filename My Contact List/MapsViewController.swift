@@ -11,6 +11,18 @@ import CoreData
 
 class MapsViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
+    @IBAction func mapTypeChanged(_ sender: Any) {
+        switch sgmtMapType.selectedSegmentIndex {
+        case 0:
+            mapView.mapType = .standard
+        case 1:
+            mapView.mapType = .hybrid
+        case 2:
+            mapView.mapType = .satellite
+        default: break
+        }
+    }
+    @IBOutlet weak var sgmtMapType: UISegmentedControl!
     var locationManager: CLLocationManager!
     @IBOutlet weak var mapView: MKMapView!
     var contacts:[Contact] = []
