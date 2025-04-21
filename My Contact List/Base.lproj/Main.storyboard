@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -378,14 +379,39 @@
         <!--Maps-->
         <scene sceneID="FQh-3b-hnh">
             <objects>
-                <viewController title="Maps" id="wY0-SG-eAu" sceneMemberID="viewController">
+                <viewController title="Maps" id="wY0-SG-eAu" customClass="MapsViewController" customModule="My_Contact_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4bk-u2-HJo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A3M-KC-lEf">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a7V-Iq-yP1">
+                                <rect key="frame" x="20" y="79" width="90" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Find Me!"/>
+                                <connections>
+                                    <action selector="findUser:" destination="wY0-SG-eAu" eventType="touchUpInside" id="Mec-h0-l2f"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="1c0-hN-fua"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="A3M-KC-lEf" firstAttribute="leading" secondItem="1c0-hN-fua" secondAttribute="leading" id="88G-Zp-EIs"/>
+                            <constraint firstItem="1c0-hN-fua" firstAttribute="trailing" secondItem="A3M-KC-lEf" secondAttribute="trailing" id="Cng-gn-34S"/>
+                            <constraint firstItem="1c0-hN-fua" firstAttribute="bottom" secondItem="A3M-KC-lEf" secondAttribute="bottom" id="Eng-0r-83u"/>
+                            <constraint firstItem="A3M-KC-lEf" firstAttribute="top" secondItem="1c0-hN-fua" secondAttribute="top" id="WVL-C5-Au4"/>
+                            <constraint firstItem="a7V-Iq-yP1" firstAttribute="leading" secondItem="1c0-hN-fua" secondAttribute="leading" constant="20" id="ndB-Z1-84j"/>
+                            <constraint firstItem="a7V-Iq-yP1" firstAttribute="top" secondItem="1c0-hN-fua" secondAttribute="top" constant="20" id="umS-cT-WDy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Maps" image="globe.europe.africa.fill" catalog="system" id="sHB-2B-smi"/>
+                    <connections>
+                        <outlet property="mapView" destination="A3M-KC-lEf" id="sjp-6r-eyW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqn-Zn-UML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
