@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if settings.string(forKey: Constants.kSortDirectionAscending) == nil {
             settings.set(true, forKey: Constants.kSortDirectionAscending)
         }
+        if ( settings.string(forKey: Constants.kSortField)) == nil {
+            settings.set("email", forKey: Constants.kSortField)
+        }
         settings.synchronize()
         print("Sort field: \(settings.string(forKey: Constants.kSortField)!)")
         print("Sort direction: \(settings.bool(forKey: Constants.kSortDirectionAscending))")

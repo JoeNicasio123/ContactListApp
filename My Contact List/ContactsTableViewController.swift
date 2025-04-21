@@ -9,7 +9,6 @@ import UIKit
 import CoreData
 
 class ContactsTableViewController: UITableViewController {
-    
     //let contacts = ["Jim", "John", "Dana", "Rosie", "Justin", "Jeremy", "Sarah", "Matt", "Joe", "Donald", "Jeff"]
     var contacts:[NSManagedObject] = []
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
