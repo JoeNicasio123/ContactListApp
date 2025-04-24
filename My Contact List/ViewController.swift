@@ -56,8 +56,16 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
             cameraController.allowsEditing = true
             self.present(cameraController, animated: true, completion: nil)
         }
-        
     }
+    
+    func imagePickerController(_ _picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.editedImage] as? UIImage {
+            imgContactPicture.contentMode = .scaleAspectFit
+            imgContactPicture.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
