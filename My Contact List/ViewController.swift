@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, DateControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func dateChanged(date: Date) {
         if currentContact == nil {
@@ -45,7 +45,19 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
     @IBOutlet weak var btnChange: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sgmtEditMode: UISegmentedControl!
+    @IBOutlet weak var imgContactPicture: UIImageView!
     
+    @IBAction func changePicture(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+            cameraController.cameraCaptureMode = .photo
+            cameraController.delegate = self
+            cameraController.allowsEditing = true
+            self.present(cameraController, animated: true, completion: nil)
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    @IBOutlet weak var lblBattery: UILabel!
     @IBOutlet weak var swAscending: UISwitch!
     @IBOutlet weak var pckSortField: UIPickerView!
     
@@ -20,6 +21,30 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Do any additional setup after loading the view.
         pckSortField.dataSource = self;
         pckSortField.delegate = self;
+        
+        UIDevice.current.isBatteryMonitoringEnabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(self.batteryChanged), name: UIDevice.batteryStateDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.batteryChanged), name: UIDevice.batteryStateDidChangeNotification, object: nil)
+        self.batteryChanged()
+    }
+    
+    @objc func batteryChanged() {
+        let device = UIDevice.current
+        var batteryState: String
+        switch(device.batteryState) {
+        case .charging:
+            batteryState = "+"
+        case .full:
+            batteryState = "!"
+        case .unplugged:
+            batteryState = "-"
+        case .unknown:
+            batteryState = "?"
+        }
+        let batteryLevelPercent = device.batteryLevel * 100
+        let batteryLevel = String(format: "%.0f%%", batteryLevelPercent)
+        let batteryStatus = "\(batteryLevel) (\(batteryState))"
+        lblBattery.text = batteryStatus
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -70,5 +95,9 @@ class SettingsViewController: UIViewController, UIPickerViewDataSource, UIPicker
         let settings = UserDefaults.standard
         settings.set(swAscending.isOn, forKey: Constants.kSortDirectionAscending)
         settings.synchronize()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        UIDevice.current.isBatteryMonitoringEnabled = false
     }
 }
