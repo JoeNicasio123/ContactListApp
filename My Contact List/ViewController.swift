@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
     var currentContact: Contact?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+    @IBOutlet weak var lblPhone: UILabel!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtAddress: UITextField!
     @IBOutlet weak var txtCity: UITextField!
@@ -97,6 +98,19 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
         let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip, txtPhone, txtCell, txtEmail]
         for textfield in textFields {
             textfield.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
+        }
+        let longPress = UILongPressGestureRecognizer.init(target: self, action: #selector(callPhone(gesture:)))
+        lblPhone.addGestureRecognizer(longPress)
+    }
+    
+    @objc func callPhone(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let number = txtCell.text
+            if number!.count > 0 { //Don't call blank numbers
+                let url = NSURL(string: "telprompt://\(number!)")
+                UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+                print("Calling Phone Number: \(url!)")
+            }
         }
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

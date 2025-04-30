@@ -115,7 +115,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WPR-Jm-Yar">
                                                         <rect key="frame" x="0.0" y="0.0" width="161.66666666666666" height="62.333333333333336"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqR-5z-pit">
+                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cell Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqR-5z-pit">
                                                                 <rect key="frame" x="0.0" y="0.0" width="161.66666666666666" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
@@ -239,6 +239,7 @@
                         <outlet property="imgContactPicture" destination="NWz-mg-JuN" id="sRG-wb-kxl"/>
                         <outlet property="lblBirthdate" destination="Dwe-0K-eSG" id="zaK-WV-lKC"/>
                         <outlet property="lblDate" destination="egz-qK-AbA" id="2Fh-Ak-8pe"/>
+                        <outlet property="lblPhone" destination="HqR-5z-pit" id="IVE-qu-ESc"/>
                         <outlet property="scrollView" destination="AeY-TI-BRf" id="KDV-8m-Cv8"/>
                         <outlet property="sgmtEditMode" destination="Yhw-QJ-cc3" id="sqW-p0-qwy"/>
                         <outlet property="txtAddress" destination="HvS-4L-F7E" id="CB8-eI-Z4a"/>
