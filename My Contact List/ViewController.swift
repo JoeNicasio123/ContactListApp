@@ -62,6 +62,11 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
         if let image = info[.editedImage] as? UIImage {
             imgContactPicture.contentMode = .scaleAspectFit
             imgContactPicture.image = image
+            if currentContact == nil {
+                let context = appDelegate.persistentContainer.viewContext
+                currentContact = Contact(context: context)
+            }
+            currentContact?.image = image.jpegData(compressionQuality: 1.0)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -82,6 +87,9 @@ class ViewController: UIViewController, UITextFieldDelegate, DateControllerDeleg
             formatter.dateStyle = .short
             if currentContact!.birthday != nil {
                 lblDate.text = formatter.string(from: currentContact!.birthday!)
+            }
+            if let imageData = currentContact?.image as? Data {
+                imgContactPicture.image = UIImage(data: imageData)
             }
         }
         self.changeEditMode(self)
