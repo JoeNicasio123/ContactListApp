@@ -7,9 +7,11 @@
 
 import UIKit
 import CoreData
+import CoreMotion
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    lazy var motionManager = CMMotionManager()
 
 
 
